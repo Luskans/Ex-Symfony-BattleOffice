@@ -18,7 +18,7 @@
                 <div class="nav-wrapper">
                     <div class="row">
                         <div class="col s12 m6">
-                            <a href="#!" class="brand-logo">BattleOffice</a>
+                            <a href="{{ path('landing_page') }}" class="brand-logo">BattleOffice</a>
                         </div>
                         <div class="col s12 m6">
                             <div class="picto-nav">
@@ -60,8 +60,8 @@
                 </div>
             </div>
         </footer>
-        <script src="assets/js/materialize.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
