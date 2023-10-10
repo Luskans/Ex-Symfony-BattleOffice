@@ -30,7 +30,7 @@ class Address
     #[ORM\Column(length: 255)]
     private ?string $phone = null;
 
-    #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: Order::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: Order::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
     #[ORM\ManyToOne(inversedBy: 'addresses')]

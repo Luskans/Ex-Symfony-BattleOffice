@@ -18,10 +18,7 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $price = null;
-
-    #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'products')]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Order::class, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
     public function __construct()
@@ -46,18 +43,6 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?int
-    {
-        return $this->price;
-    }
-
-    public function setPrice(int $price): static
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Order>
      */
@@ -70,7 +55,7 @@ class Product
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
-            $order->addProduct($this);
+            $order->setProduct($this);
         }
 
         return $this;
@@ -79,7 +64,10 @@ class Product
     public function removeOrder(Order $order): static
     {
         if ($this->orders->removeElement($order)) {
-            $order->removeProduct($this);
+            // set the owning side to null (unless already changed)
+            if ($order->getProduct() === $this) {
+                $order->setProduct(null);
+            }
         }
 
         return $this;

@@ -37,10 +37,11 @@
                                 <p class="h6 center-align">Choisissez votre produit</p>
                             </div>
                         </div>
-
+                        {{ form_start(orderForm) }} 
                         <label class="cure-radio">
-                            <input name="order[cart][cart_products][0]" value="2" type="radio">
-                            <article>
+                            {# <input name="order[cart][cart_products][0]" value="2" type="radio"> #}
+                            <input>
+                            <article id="article1">
                                 <div class="card center-align">
                                     <div class="row">
                                         <div class="col s12 m12 l4">
@@ -81,8 +82,10 @@
                             </article>
                         </label>
                         <label class="cure-radio">
-                            <input name="order[cart][cart_products][0]" value="3" type="radio" checked="checked">
-                            <article>
+                            {# <input name="order[cart][cart_products][0]" value="3" type="radio" checked="checked"> #}
+                            {# <input type="radio" checked="checked"> #}
+                            <input>
+                            <article id="article2">
                                 <div class="card center-align">
                                     <div class="row">
                                         <div class="col s12 m12 l4">
@@ -124,8 +127,9 @@
                             </article>
                         </label>
                         <label class="cure-radio">
-                            <input name="order[cart][cart_products][0]" value="4" type="radio">
-                            <article>
+                            {# <input name="order[cart][cart_products][0]" value="4" type="radio"> #}
+                            <input>
+                            <article id="article3">
                                 <div class="card center-align">
                                     <div class="row">
                                         <div class="col s12 m12 l4">

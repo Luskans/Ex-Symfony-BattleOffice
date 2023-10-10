@@ -3,10 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Address;
-use Doctrine\DBAL\Types\StringType;
+use App\Form\CountryType as FormCountryType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,22 +16,27 @@ class AddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('line1', StringType::class, [
+            ->add('line1', TextType::class, [
+                'required' => false,
                 'label' => 'Adresse'
             ]) 
-            ->add('line2', StringType::class, [
+            ->add('line2', TextType::class, [
+                'required' => false,
                 'label' => 'Complément adr.'
             ])
-            ->add('city', StringType::class, [
+            ->add('city', TextType::class, [
+                'required' => false,
                 'label' => 'Ville'
             ])
             ->add('zipcode', IntegerType::class, [
+                'required' => false,
                 'label' => 'Code postal'
             ])
-            ->add('country', CountryType::class, [
+            // ->add('country', FormCountryType::class, [
                 
-            ])
-            ->add('phone', StringType::class, [
+            // ])
+            ->add('phone', TextType::class, [
+                'required' => false,
                 'label' => 'Téléphone'
             ]) 
         ;

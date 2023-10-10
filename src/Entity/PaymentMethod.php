@@ -18,7 +18,7 @@ class PaymentMethod
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'paymentMethod', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'paymentMethod', targetEntity: Order::class, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
     public function __construct()

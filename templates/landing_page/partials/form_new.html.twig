@@ -8,7 +8,7 @@
         margin:0;
     }
 </style>
-
+{# {{ form_start(orderForm) }} #}
 {# Etape 2 #}
 <div class="card step_2">
     <div class="card-content">
@@ -16,56 +16,65 @@
         <p class="h6 center-align">Remplissez ce formulaire</p>
         <div class="form-wrapper">
             <div class="input-field">
-                <input type="text">
-                <label>Prénom</label>
-                {# {{ form_row(candidateForm.gender) }} #}
+                {# <input type="text">
+                <label>Prénom</label> #}
+                {{ form_row(orderForm.client.firstname) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Nom</label>
+                {# <input type="text">
+                <label>Nom</label> #}
+                {{ form_row(orderForm.client.lastname) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Adresse</label>
+                {# <input type="text">
+                <label>Adresse</label> #}
+                {{ form_row(orderForm.deliveryAddress.line1) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Complément adr.</label>
+                {# <input type="text">
+                <label>Complément adr.</label> #}
+                {{ form_row(orderForm.deliveryAddress.line2) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Ville</label>
+                {# <input type="text">
+                <label>Ville</label> #}
+                {{ form_row(orderForm.deliveryAddress.city) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Code postal</label>
+                {# <input type="text">
+                <label>Code postal</label> #}
+                {{ form_row(orderForm.deliveryAddress.zipcode) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <select>
+                {# <select>
                     <option>France</option>
                 </select>
-                <label>Pays</label>
+                <label>Pays</label> #}
+                {# {{ form_widget(orderForm.deliveryAddress.country) }} #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Téléphone</label>
+                {# <input type="text">
+                <label>Téléphone</label> #}
+                {{ form_row(orderForm.deliveryAddress.phone) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Email</label>
+                {# <input type="text">
+                <label>Email</label> #}
+                {{ form_row(orderForm.client.email.first) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Confirmation email</label>
+                {# <input type="text">
+                <label>Confirmation email</label> #}
+                {{ form_row(orderForm.client.email.second) }}
                 <div class="form-error"></div>
             </div>
         </div>
@@ -75,51 +84,63 @@
             <div class="collapsible-header"><i class="material-icons">markunread_mailbox</i>Adresse de livraison différente ?</div>
             <div class="collapsible-body">
                 <div class="input-field">
-                    <input type="text">
-                    <label>Prénom</label>
+                    {# <input type="text">
+                    <label>Prénom</label> #}
+                    {# {{ form_row(orderForm.client.firstname) }} #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Nom</label>
+                    {# <input type="text">
+                    <label>Nom</label> #}
+                    {# {{ form_row(orderForm.client.lastname) }} #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Adresse</label>
+                    {# <input type="text">
+                    <label>Adresse</label> #}
+                    {{ form_row(orderForm.billingAddress.line1) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Complément adr.</label>
+                    {# <input type="text">
+                    <label>Complément adr.</label> #}
+                    {{ form_row(orderForm.billingAddress.line2) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Ville</label>
+                    {# <input type="text">
+                    <label>Ville</label> #}
+                    {{ form_row(orderForm.billingAddress.city) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Code postal</label>
+                    {# <input type="text">
+                    <label>Code postal</label> #}
+                    {{ form_row(orderForm.billingAddress.zipcode) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <select>
+                    {# <select>
                         <option>France</option>
                     </select>
-                    <label>Pays</label>
+                    <label>Pays</label> #}
+                    {# {{ form_widget(orderForm.billingAddress.country) }} #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Téléphone</label>
+                    {# <input type="text">
+                    <label>Téléphone</label> #}
+                    {{ form_row(orderForm.billingAddress.phone) }}
                     <div class="form-error"></div>
                 </div>
+                {{ form_widget(orderForm.paymentMethod.name) }}
+                {{ form_widget(orderForm.product.name) }}
+                {{ form_widget(orderForm.status.name) }}
             </div>
         </li>
     </ul>
 </div>
+
 {# Etape 3 #}
 <div class="card step_3">
     <div class="card-content">
@@ -131,7 +152,8 @@
                 <div class="collapsible-body card-form">
                     <div class="row">
                         <div class="center-align">
-                            <button type="submit" name="order[payment_method]" value="lpmonetico" class="btn-large btn-block waves-effect waves-light">Continuer</button>
+                            {# <button id="payment1" type="submit" name="order[payment_method]" value="lpmonetico" class="btn-large btn-block waves-effect waves-light">Continuer</button> #}
+                            <button id="payment1" type="submit" class="btn-large btn-block waves-effect waves-light">Continuer</button>
                             <p>J'accepte les <a href="https://feelwellshop.com/fr/conditions-generales-de-ventes" target="_blank">conditions générales de vente</a></p>
                             <img class="responsive-img monetico" src="assets/images/paiement-securise-stripe.jpeg" alt="Stripe protège vos achats">
                         </div>
@@ -143,7 +165,8 @@
                 <div class="collapsible-body">
                     <div class="row">
                         <div class="center-align">
-                            <button type="submit" name="order[payment_method]" value="lppaypal" class="btn-large btn-block waves-effect waves-light">Continuer sur PayPal</button>
+                            {# <button id="payment2" type="submit" name="order[payment_method]" value="lppaypal" class="btn-large btn-block waves-effect waves-light">Continuer sur PayPal</button> #}
+                            <button id="payment2" type="submit" class="btn-large btn-block waves-effect waves-light">Continuer sur PayPal</button>
                             <p>J'accepte les <a href="https://feelwellshop.com/fr/conditions-generales-de-ventes" target="_blank">conditions générales de vente</a></p>
                         </div>
                     </div>
@@ -152,3 +175,70 @@
         </ul>
     </div>
 </div>
+<button type='submit'>Valider ici</button>
+{{ form_end(orderForm) }}
+
+<script>
+    const product1 = document.querySelector('#article1');
+    const product2 = document.querySelector('#article2');
+    const product3 = document.querySelector('#article3');
+    const payment1 = document.querySelector('#payment1');
+    const payment2 = document.querySelector('#payment2');
+    const productInput = document.querySelector('#order_product_name');
+    const paymentMethodInput = document.querySelector('#order_paymentMethod_name');
+
+    product1.addEventListener('click', () => {
+        console.log('test');
+        productInput.value = 'Nerf© Elite Jolt';
+        if (product1.classList == '') {
+            product1.classList.add('articleSelected');
+        }
+        product2.classList.remove('articleSelected');
+        product3.classList.remove('articleSelected');
+    })
+
+    product2.addEventListener('click', () => {
+        productInput.value = 'Nerf© Elite Disruptor';
+        product1.classList.add('articleSelected');
+        if (product2.classList == '') {
+            product2.classList.add('articleSelected');
+        }
+        product1.classList.remove('articleSelected');
+        product3.classList.remove('articleSelected');
+    })
+
+    product3.addEventListener('click', () => {
+        productInput.value = 'Nerf© Elite Rapid Strike';
+        product1.classList.add('articleSelected');
+        if (product3.classList == '') {
+            product3.classList.add('articleSelected');
+        }
+        product2.classList.remove('articleSelected');
+        product1.classList.remove('articleSelected');
+    })
+
+    payment1.addEventListener('click', () => {
+        paymentMethodInput.value = 'lpmonetico';
+    })
+
+    payment2.addEventListener('click', () => {
+        paymentMethodInput.value = 'lppaypal';
+    })
+</script>
+
+<style type="text/css">
+    .articleSelected {
+        border: 5px solid #41B3FF;
+        animation: grow 0.2s linear forwards;
+        transition: all 0.2s ease-in-out;
+    }
+
+    @keyframes grow {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.02);
+    }
+}
+</style>

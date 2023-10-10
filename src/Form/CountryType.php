@@ -24,12 +24,14 @@ class CountryType extends AbstractType
         $choices = [];
 
         foreach ($countries as $country) {
-            $choices[] = $country->getName();
+            // $choices[] = $country->getName();
+            $choices[$country->getName()] = $country->getName();
         }
 
         $builder
             ->add('name', ChoiceType::class, [
                 'choices' => $choices,
+                'required' => false,
                 'label' => 'Pays'
             ])
         ;

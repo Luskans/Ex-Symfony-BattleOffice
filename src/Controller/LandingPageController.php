@@ -19,13 +19,23 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LandingPageController extends AbstractController
 {
-    #[Route('/', name: 'landing_page')]
-    public function index(Request $request, EntityManagerInterface $entityManager, Client $client, Address $address, Country $country, PaymentMethod $paymentMethod, Product $product, Status $status, Order $order)
+    #[Route('/', name: 'landing_page', methods: ['GET', 'POST'])]
+    // public function index(Request $request, EntityManagerInterface $entityManager, Client $client, Address $address, Country $country, PaymentMethod $paymentMethod, Product $product, Status $status, Order $order)
+    public function index(Request $request, EntityManagerInterface $entityManager)
     {
+        $order = new Order();
         $form = $this->createForm(OrderType::class, $order);
+        $form->handleRequest($request);
+        // dd($form->getData());
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd($form->getData());           
+
+            return $this->redirectToRoute('confirmation');
+        }
 
         return $this->render('landing_page/index_new.html.twig', [
-            'oderForm' => $form
+            'orderForm' => $form
         ]);
     }
     

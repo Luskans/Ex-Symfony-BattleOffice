@@ -24,7 +24,7 @@ class Client
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Order::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Order::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
     public function __construct()

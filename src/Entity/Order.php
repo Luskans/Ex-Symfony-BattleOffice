@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -36,12 +37,12 @@ class Order
     #[ORM\ManyToOne(inversedBy: 'orders')]
     private ?Address $billingAddress = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'orders')]
-    private Collection $products;
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    private ?Product $product = null;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -121,26 +122,14 @@ class Order
         return $this;
     }
 
-    /**
-     * @return Collection<int, Product>
-     */
-    public function getProducts(): Collection
+    public function getProduct(): ?Product
     {
-        return $this->products;
+        return $this->product;
     }
 
-    public function addProduct(Product $product): static
+    public function setProduct(?Product $product): static
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): static
-    {
-        $this->products->removeElement($product);
+        $this->product = $product;
 
         return $this;
     }
