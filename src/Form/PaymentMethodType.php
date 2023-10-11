@@ -16,7 +16,7 @@ class PaymentMethodType extends AbstractType
     {
         $builder
         ->add('name', HiddenType::class, [
-            'required' => false,
+            'required' => true,
             'attr' => [
                 'id' => 'paymentMethodInput',
             ],

@@ -14,7 +14,7 @@ class StatusType extends AbstractType
     {
         $builder
         ->add('name', HiddenType::class, [
-            'required' => false,
+            'required' => true,
             'attr' => [
                 'value' => 'WAITING',
             ],

@@ -33,9 +33,12 @@ class Address
     #[ORM\OneToMany(mappedBy: 'deliveryAddress', targetEntity: Order::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
-    #[ORM\ManyToOne(inversedBy: 'addresses')]
+    #[ORM\ManyToOne(inversedBy: 'addresses', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Country $country = null;
+
+    #[ORM\ManyToOne(inversedBy: 'addresses', cascade: ['persist', 'remove'])]
+    private ?Client $client = null;
 
     public function __construct()
     {
@@ -145,6 +148,18 @@ class Address
     public function setCountry(?Country $country): static
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): static
+    {
+        $this->client = $client;
 
         return $this;
     }

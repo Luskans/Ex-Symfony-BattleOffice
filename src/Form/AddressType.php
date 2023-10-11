@@ -17,7 +17,7 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('line1', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Adresse'
             ]) 
             ->add('line2', TextType::class, [
@@ -25,19 +25,22 @@ class AddressType extends AbstractType
                 'label' => 'Complément adr.'
             ])
             ->add('city', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Ville'
             ])
             ->add('zipcode', IntegerType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Code postal'
             ])
-            // ->add('country', FormCountryType::class, [
-                
-            // ])
+            ->add('country', FormCountryType::class, [
+                'required' => true,
+            ])
             ->add('phone', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Téléphone'
+            ])
+            ->add('client', ClientType::class, [
+                'required' => true,
             ]) 
         ;
     }

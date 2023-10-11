@@ -21,15 +21,12 @@ class Client
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
-
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Order::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
-    private Collection $orders;
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Address::class, cascade: ['persist', 'remove'])]
+    private Collection $addresses;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->addresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,42 +58,30 @@ class Client
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, Address>
      */
-    public function getOrders(): Collection
+    public function getAddresses(): Collection
     {
-        return $this->orders;
+        return $this->addresses;
     }
 
-    public function addOrder(Order $order): static
+    public function addAddress(Address $address): static
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setClient($this);
+        if (!$this->addresses->contains($address)) {
+            $this->addresses->add($address);
+            $address->setClient($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): static
+    public function removeAddress(Address $address): static
     {
-        if ($this->orders->removeElement($order)) {
+        if ($this->addresses->removeElement($address)) {
             // set the owning side to null (unless already changed)
-            if ($order->getClient() === $this) {
-                $order->setClient(null);
+            if ($address->getClient() === $this) {
+                $address->setClient(null);
             }
         }
 

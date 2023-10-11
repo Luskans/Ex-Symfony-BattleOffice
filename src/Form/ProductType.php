@@ -16,7 +16,7 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', HiddenType::class, [
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'id' => 'productInput',
                 ],

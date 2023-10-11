@@ -29,7 +29,27 @@ class LandingPageController extends AbstractController
         // dd($form->getData());
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData());           
+            // dd($form->getData());
+
+            $billingAddress = $form['billingAddress']->getData();
+            if (!$billingAddress || empty($billingAddress)) {
+                $order->setBillingAddress(new Address);
+                $order->getBillingAddress()->setClient(new Client);
+                $order->getBillingAddress()->setCountry(new Country);
+                $order->getBillingAddress()->getClient()->setFirstname($form['deliveryAddress']['client']['firstname']->getData());
+                $order->getBillingAddress()->getClient()->setLastname($form['deliveryAddress']['client']['firstname']->getData());
+                $order->getBillingAddress()->setLine1($form['deliveryAddress']['line1']->getData());
+                $order->getBillingAddress()->setLine2($form['deliveryAddress']['line2']->getData());
+                $order->getBillingAddress()->setCity($form['deliveryAddress']['city']->getData());
+                $order->getBillingAddress()->setZipcode($form['deliveryAddress']['zipcode']->getData());
+                $order->getBillingAddress()->getCountry()->setName($form['deliveryAddress']['country']['name']->getData());
+                $order->getBillingAddress()->setPhone($form['deliveryAddress']['phone']->getData());
+                
+                dd($order);
+            }
+            
+            $entityManager->persist($order);
+            $entityManager->flush();
 
             return $this->redirectToRoute('confirmation');
         }

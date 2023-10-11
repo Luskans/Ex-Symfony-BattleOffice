@@ -29,9 +29,19 @@ class CountryType extends AbstractType
         }
 
         $builder
+            // ->add('name', ChoiceType::class, [
+            //     'choices' => $choices,
+            //     'required' => true,
+            //     'label' => 'Pays'
+            // ])
             ->add('name', ChoiceType::class, [
-                'choices' => $choices,
-                'required' => false,
+                'choices' => [
+                    '' => '',
+                    'France' => 'France',
+                    'Belgique' => 'Belgique',
+                    'Luxembourg' => 'Luxembourg'
+                ],
+                'required' => true,
                 'label' => 'Pays'
             ])
         ;

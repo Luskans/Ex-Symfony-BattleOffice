@@ -15,29 +15,30 @@ class OrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('client', ClientType::class, [
-                'required' => false,
+            ->add('user', UserType::class, [
+                'required' => true,
             ])
             ->add('deliveryAddress', AddressType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('billingAddress', AddressType::class, [
                 'required' => false,
+                'mapped' => false,
             ])
             ->add('paymentMethod', PaymentMethodType::class, [
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'id' => 'paymentMethodInput',
                 ],
             ])
             ->add('product', ProductType::class, [
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'id' => 'productInput',
                 ],
             ])
             ->add('status', StatusType::class, [
-                'required' => false,
+                'required' => true,
             ])        
         ;
     }
