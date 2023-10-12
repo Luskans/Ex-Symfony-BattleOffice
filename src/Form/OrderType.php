@@ -18,10 +18,10 @@ class OrderType extends AbstractType
             ->add('user', UserType::class, [
                 'required' => true,
             ])
-            ->add('deliveryAddress', AddressType::class, [
+            ->add('billingAddress', AddressType::class, [
                 'required' => true,
             ])
-            ->add('billingAddress', AddressType::class, [
+            ->add('deliveryAddress', AddressType::class, [
                 'required' => false,
                 'mapped' => false,
             ])

@@ -18,37 +18,37 @@
             <div class="input-field">
                 {# <input type="text">
                 <label>Prénom</label> #}
-                {{ form_row(orderForm.deliveryAddress.client.firstname) }}
+                {{ form_row(orderForm.billingAddress.client.firstname) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
                 {# <input type="text">
                 <label>Nom</label> #}
-                {{ form_row(orderForm.deliveryAddress.client.lastname) }}
+                {{ form_row(orderForm.billingAddress.client.lastname) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
                 {# <input type="text">
                 <label>Adresse</label> #}
-                {{ form_row(orderForm.deliveryAddress.line1) }}
+                {{ form_row(orderForm.billingAddress.line1) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
                 {# <input type="text">
                 <label>Complément adr.</label> #}
-                {{ form_row(orderForm.deliveryAddress.line2) }}
+                {{ form_row(orderForm.billingAddress.line2) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
                 {# <input type="text">
                 <label>Ville</label> #}
-                {{ form_row(orderForm.deliveryAddress.city) }}
+                {{ form_row(orderForm.billingAddress.city) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
                 {# <input type="text">
                 <label>Code postal</label> #}
-                {{ form_row(orderForm.deliveryAddress.zipcode) }}
+                {{ form_row(orderForm.billingAddress.zipcode) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
@@ -56,13 +56,13 @@
                     <option>France</option>
                 </select>
                 <label>Pays</label> #}
-                {{ form_widget(orderForm.deliveryAddress.country) }}
+                {{ form_widget(orderForm.billingAddress.country) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
                 {# <input type="text">
                 <label>Téléphone</label> #}
-                {{ form_row(orderForm.deliveryAddress.phone) }}
+                {{ form_row(orderForm.billingAddress.phone) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
@@ -86,37 +86,37 @@
                 <div class="input-field">
                     {# <input type="text">
                     <label>Prénom</label> #}
-                    {{ form_row(orderForm.billingAddress.client.firstname) }}
+                    {{ form_row(orderForm.deliveryAddress.client.firstname) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
                     {# <input type="text">
                     <label>Nom</label> #}
-                    {{ form_row(orderForm.billingAddress.client.lastname) }}
+                    {{ form_row(orderForm.deliveryAddress.client.lastname) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
                     {# <input type="text">
                     <label>Adresse</label> #}
-                    {{ form_row(orderForm.billingAddress.line1) }}
+                    {{ form_row(orderForm.deliveryAddress.line1) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
                     {# <input type="text">
                     <label>Complément adr.</label> #}
-                    {{ form_row(orderForm.billingAddress.line2) }}
+                    {{ form_row(orderForm.deliveryAddress.line2) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
                     {# <input type="text">
                     <label>Ville</label> #}
-                    {{ form_row(orderForm.billingAddress.city) }}
+                    {{ form_row(orderForm.deliveryAddress.city) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
                     {# <input type="text">
                     <label>Code postal</label> #}
-                    {{ form_row(orderForm.billingAddress.zipcode) }}
+                    {{ form_row(orderForm.deliveryAddress.zipcode) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
@@ -124,13 +124,13 @@
                         <option>France</option>
                     </select>
                     <label>Pays</label> #}
-                    {{ form_widget(orderForm.billingAddress.country) }}
+                    {{ form_widget(orderForm.deliveryAddress.country) }}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
                     {# <input type="text">
                     <label>Téléphone</label> #}
-                    {{ form_row(orderForm.billingAddress.phone) }}
+                    {{ form_row(orderForm.deliveryAddress.phone) }}
                     <div class="form-error"></div>
                 </div>
                 {{ form_widget(orderForm.paymentMethod.name) }}

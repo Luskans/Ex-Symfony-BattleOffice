@@ -21,6 +21,9 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Order::class, cascade: ['persist', 'remove'])]
     private Collection $orders;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $api_id = null;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -69,6 +72,18 @@ class Product
                 $order->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getApiId(): ?int
+    {
+        return $this->api_id;
+    }
+
+    public function setApiId(?int $api_id): static
+    {
+        $this->api_id = $api_id;
 
         return $this;
     }
